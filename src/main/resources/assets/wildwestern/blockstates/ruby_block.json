@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "normal": { "model": "wildwestern:ruby_block" }
+  }
+}

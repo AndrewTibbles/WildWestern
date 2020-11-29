@@ -1,0 +1,1 @@
+gradlew genIntellijRuns && gradlew --refresh-dependencies && gradlew clean
