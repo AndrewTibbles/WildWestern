@@ -3,3 +3,7 @@ item.ruby.name=Ruby
 
 //Blocks
 tile.ruby_block.name=Ruby Block
+tile.ruby_ore.name=Ruby Ore
+
+//Tabs
+itemGroup.wildwesterntab=Wild Western

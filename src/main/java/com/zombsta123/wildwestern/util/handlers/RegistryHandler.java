@@ -3,12 +3,17 @@ package com.zombsta123.wildwestern.util.handlers;
 import com.zombsta123.wildwestern.WildWestern;
 import com.zombsta123.wildwestern.init.BlockInit;
 import com.zombsta123.wildwestern.init.ItemInit;
+import com.zombsta123.wildwestern.recipes.CraftingRecipes;
+import com.zombsta123.wildwestern.recipes.SmeltingRecipes;
+import com.zombsta123.wildwestern.world.gen.WorldGenOres;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.event.GameRuleChangeEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod.EventBusSubscriber
 public class RegistryHandler
@@ -41,11 +46,13 @@ public class RegistryHandler
 
     public static void preInitRegistries()
     {
-
+        GameRegistry.registerWorldGenerator(new WorldGenOres(), 0);
     }
 
     public static void initRegistries()
     {
+    	CraftingRecipes.init();
+    	SmeltingRecipes.init();
         WildWestern.proxy.render();
     }
 

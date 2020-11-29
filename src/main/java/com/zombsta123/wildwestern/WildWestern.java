@@ -1,8 +1,11 @@
 package com.zombsta123.wildwestern;
 
 import com.zombsta123.wildwestern.proxy.CommonProxy;
+import com.zombsta123.wildwestern.tabs.WildWesternTab;
 import com.zombsta123.wildwestern.util.Reference;
 import com.zombsta123.wildwestern.util.handlers.RegistryHandler;
+
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -19,6 +22,7 @@ public class WildWestern
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
     public static CommonProxy proxy;
 
+    public static final CreativeTabs WILDWESTERNTAB = new WildWesternTab("wildwesterntab");
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {

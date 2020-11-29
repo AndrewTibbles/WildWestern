@@ -1,0 +1,14 @@
+[{
+  "modid": "wildwestern",
+  "name": "Wild Western",
+  "description": "A Mod that introduces the wonders of the wild west to the game.",
+  "version": "1.0",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["zombsta123"],
+  "credits": ":)",
+  "logoFile": "textures:logo/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}]

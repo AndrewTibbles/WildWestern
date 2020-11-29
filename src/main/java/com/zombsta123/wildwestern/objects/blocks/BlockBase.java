@@ -1,11 +1,11 @@
 package com.zombsta123.wildwestern.objects.blocks;
 
+import com.zombsta123.wildwestern.WildWestern;
 import com.zombsta123.wildwestern.init.BlockInit;
 import com.zombsta123.wildwestern.init.ItemInit;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 
 public class BlockBase extends Block
@@ -18,7 +18,7 @@ public class BlockBase extends Block
         setHardness(hardness);
         setResistance(resistance);
         setHarvestLevel(tool, mininglevel);
-        setCreativeTab(CreativeTabs.MATERIALS);
+        setCreativeTab(WildWestern.WILDWESTERNTAB);
 
         BlockInit.BLOCKS.add(this);
         ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));

@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "humlands:item/royal_flan_raw"
-  }
-}
