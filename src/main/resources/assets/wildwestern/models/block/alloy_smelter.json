@@ -1,0 +1,12 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "particle": "wildwestern:blocks/alloy_smelter_side",
+    "up": "wildwestern:blocks/alloy_smelter_top",
+    "down": "wildwestern:blocks/alloy_smelter_top",
+    "north": "wildwestern:blocks/alloy_smelter_front",
+    "east": "wildwestern:blocks/alloy_smelter_side",
+    "south": "wildwestern:blocks/alloy_smelter_side",
+    "west": "wildwestern:blocks/alloy_smelter_side"
+  }
+}

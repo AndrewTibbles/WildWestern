@@ -3,7 +3,33 @@ item.ruby.name=Ruby
 
 //Blocks
 tile.ruby_block.name=Ruby Block
+
+//Machines
+tile.alloy_smelter.name=Alloy Smelter
+
+//Ores
 tile.ruby_ore.name=Ruby Ore
+tile.dry_bone_ore.name=Smithsonite Ore
 
 //Tabs
 itemGroup.wildwesterntab=Wild Western
+
+//Tools
+item.ruby_sword.name=Ruby Sword
+item.ruby_shovel.name=Ruby Shovel
+item.ruby_pickaxe.name=Ruby Pickaxe
+item.ruby_axe.name=Ruby Axe
+item.ruby_hoe.name=Ruby Hoe
+
+//Armour
+item.ruby_helmet.name=Ruby Helmet
+item.ruby_chestplate.name=Ruby Chestplate
+item.ruby_leggings.name=Ruby Leggings
+item.ruby_boots.name=Ruby Boots
+
+//Food
+item.ruby_apple.name=Ruby Apple
+item.enchanted_ruby_apple.name=Enchanted Ruby Apple
+
+//Fuel
+item.dense_coal.name=Dense Coal

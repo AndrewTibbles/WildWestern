@@ -1,9 +1,9 @@
 package com.zombsta123.wildwestern;
 
-import com.zombsta123.wildwestern.proxy.CommonProxy;
-import com.zombsta123.wildwestern.tabs.WildWesternTab;
-import com.zombsta123.wildwestern.util.Reference;
-import com.zombsta123.wildwestern.util.handlers.RegistryHandler;
+import com.zombsta123.wildwestern.common.CommonProxy;
+import com.zombsta123.wildwestern.core.Reference;
+import com.zombsta123.wildwestern.core.handlers.RegistryHandler;
+import com.zombsta123.wildwestern.core.tabs.WildWesternTab;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
