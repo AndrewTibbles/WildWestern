@@ -7,6 +7,9 @@ tile.ruby_block.name=Ruby Block
 //Machines
 tile.alloy_smelter.name=Alloy Smelter
 
+//Containers
+container.alloy_smelter=Alloy Smelter
+
 //Ores
 tile.ruby_ore.name=Ruby Ore
 tile.dry_bone_ore.name=Smithsonite Ore

@@ -3,6 +3,7 @@ package com.zombsta123.wildwestern.common.blocks;
 import java.util.Random;
 
 import com.zombsta123.wildwestern.WildWestern;
+import com.zombsta123.wildwestern.common.tileentity.TileEntityAlloySmelter;
 import com.zombsta123.wildwestern.core.Reference;
 import com.zombsta123.wildwestern.core.init.BlockInit;
 
@@ -28,15 +29,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockAlloySmelter extends BlockBase {
-	
+
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public static final PropertyBool BURNING = PropertyBool.create("burning");
 
 	public BlockAlloySmelter(String name) {
 		super(name, Material.IRON, 6.0f, 6.0f, 1, "pickaxe");
 		setSoundType(SoundType.METAL);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING,
-				Boolean.valueOf(false)));
+		this.setDefaultState(
+				this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
 	}
 
 	@Override
@@ -52,9 +53,11 @@ public class BlockAlloySmelter extends BlockBase {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!worldIn.isRemote)
+		if (!worldIn.isRemote) {
 			playerIn.openGui(WildWestern.Instance, Reference.GUI_ALLOY_SMELTER, worldIn, pos.getX(), pos.getY(),
 					pos.getZ());
+		}
+
 		return true;
 	}
 
@@ -63,44 +66,48 @@ public class BlockAlloySmelter extends BlockBase {
 		if (!worldIn.isRemote) {
 			IBlockState north = worldIn.getBlockState(pos.north());
 			IBlockState south = worldIn.getBlockState(pos.south());
-			IBlockState east = worldIn.getBlockState(pos.east());
 			IBlockState west = worldIn.getBlockState(pos.west());
-			EnumFacing facing = state.getValue(FACING);
-			if (facing == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock())
-				facing = EnumFacing.SOUTH;
-			else if (facing == EnumFacing.SOUTH && south.isFullBlock() && !north.isFullBlock())
-				facing = EnumFacing.NORTH;
-			else if (facing == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock())
-				facing = EnumFacing.WEST;
-			else if (facing == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock())
-				facing = EnumFacing.EAST;
+			IBlockState east = worldIn.getBlockState(pos.east());
+			EnumFacing face = (EnumFacing) state.getValue(FACING);
 
-			worldIn.setBlockState(pos, state.withProperty(FACING, facing).withProperty(BURNING, false));
+			if (face == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock())
+				face = EnumFacing.SOUTH;
+			else if (face == EnumFacing.SOUTH && south.isFullBlock() && !north.isFullBlock())
+				face = EnumFacing.NORTH;
+			else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock())
+				face = EnumFacing.EAST;
+			else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock())
+				face = EnumFacing.WEST;
+			worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
 		}
 	}
 
-	public static void setState(boolean active, BlockPos pos, World world) {
-		IBlockState state = world.getBlockState(pos);
-		TileEntity tileentity = world.getTileEntity(pos);
+	public static void setState(boolean active, World worldIn, BlockPos pos) {
+		IBlockState state = worldIn.getBlockState(pos);
+		TileEntity tileentity = worldIn.getTileEntity(pos);
 
-		world.setBlockState(pos, BlockInit.ALLOY_SMELTER.getDefaultState().withProperty(FACING, state.getValue(FACING))
-				.withProperty(BURNING, Boolean.valueOf(active)), 3);
+		// if(active) worldIn.setBlockState(pos,
+		// BlockInit.SINTERING_FURNACE.getDefaultState().withProperty(FACING,
+		// state.getValue(FACING)).withProperty(BURNING, true), 3);
+		// else worldIn.setBlockState(pos,
+		// BlockInit.SINTERING_FURNACE.getDefaultState().withProperty(FACING,
+		// state.getValue(FACING)).withProperty(BURNING, false), 3);
 
 		if (tileentity != null) {
 			tileentity.validate();
-			world.setTileEntity(pos, tileentity);
+			worldIn.setTileEntity(pos, tileentity);
 		}
 	}
 
 	@Override
-	public boolean hasTileEntity() {
+	public boolean hasTileEntity(IBlockState state) {
 		return true;
 	}
 
-	/*
-	 * @Override public TileEntity createTileEntity(World world, IBlockState state)
-	 * { return new TileEntityAlloySmelter(); }
-	 */
+	@Override
+	public TileEntity createTileEntity(World world, IBlockState state) {
+		return new TileEntityAlloySmelter();
+	}
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
@@ -132,18 +139,19 @@ public class BlockAlloySmelter extends BlockBase {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {BURNING, FACING});
+		return new BlockStateContainer(this, new IProperty[] { BURNING, FACING });
 	}
-	
+
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing facing = EnumFacing.getFront(meta);
-		if(facing.getAxis() == EnumFacing.Axis.Y) facing = EnumFacing.NORTH;
+		if (facing.getAxis() == EnumFacing.Axis.Y)
+			facing = EnumFacing.NORTH;
 		return this.getDefaultState().withProperty(FACING, facing);
 	}
-	
+
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return ((EnumFacing)state.getValue(FACING)).getIndex();
+		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
 }
