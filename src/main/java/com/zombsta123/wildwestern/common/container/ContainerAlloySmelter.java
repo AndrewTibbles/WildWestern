@@ -16,6 +16,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerAlloySmelter extends Container {
+
 	private final TileEntityAlloySmelter tileentity;
 	private int cookTime, totalCookTime, burnTime, currentBurnTime;
 

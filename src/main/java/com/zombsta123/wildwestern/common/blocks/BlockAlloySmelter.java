@@ -57,7 +57,6 @@ public class BlockAlloySmelter extends BlockBase {
 			playerIn.openGui(WildWestern.Instance, Reference.GUI_ALLOY_SMELTER, worldIn, pos.getX(), pos.getY(),
 					pos.getZ());
 		}
-
 		return true;
 	}
 
@@ -86,12 +85,12 @@ public class BlockAlloySmelter extends BlockBase {
 		IBlockState state = worldIn.getBlockState(pos);
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 
-		// if(active) worldIn.setBlockState(pos,
-		// BlockInit.SINTERING_FURNACE.getDefaultState().withProperty(FACING,
-		// state.getValue(FACING)).withProperty(BURNING, true), 3);
-		// else worldIn.setBlockState(pos,
-		// BlockInit.SINTERING_FURNACE.getDefaultState().withProperty(FACING,
-		// state.getValue(FACING)).withProperty(BURNING, false), 3);
+		if (active)
+			worldIn.setBlockState(pos, BlockInit.ALLOY_SMELTER.getDefaultState()
+					.withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, true), 3);
+		else
+			worldIn.setBlockState(pos, BlockInit.ALLOY_SMELTER.getDefaultState()
+					.withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, false), 3);
 
 		if (tileentity != null) {
 			tileentity.validate();

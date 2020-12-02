@@ -15,7 +15,7 @@
 			"model": "wildwestern:alloy_smelter",
 			"y": 270
 		},
-		"burning=trie,facing=north": {
+		"burning=true,facing=north": {
 			"model": "wildwestern:lit_alloy_smelter"
 		},
 		"burning=true,facing=east": {
